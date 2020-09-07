@@ -20,3 +20,7 @@
   border-radius: 5px;
   cursor: pointer;
 }
+
+.listItem button:active {
+  background-color: rgb(76, 64, 255);
+}
