@@ -4,6 +4,7 @@ import { v4 as uuidv4 } from "uuid";
 import ContactForm from "./ContactForm/ContactForm";
 import ContactList from "./ConatctList/ContactList";
 import Filter from "./Filter/Filter";
+import Notification from "./Notification/Notification";
 
 import "./App.css";
 
@@ -16,12 +17,6 @@ class App extends Component {
   addContact = (name, number) => {
     const { contacts } = this.state;
 
-    const contact = {
-      id: uuidv4(),
-      name,
-      number,
-    };
-
     const contactAlert = contacts.some(
       (contact) => contact.name.toLowerCase() === name.toLowerCase()
     );
@@ -30,6 +25,12 @@ class App extends Component {
       alert(`${name} is already exists!`);
       return;
     }
+
+    const contact = {
+      id: uuidv4(),
+      name,
+      number,
+    };
 
     this.setState((prevState) => {
       return {
@@ -68,13 +69,16 @@ class App extends Component {
         <ContactForm onAddContact={this.addContact} />
 
         <h2>Contacts</h2>
-        <Filter value={filter} onSearchFilter={this.searchFilter} />
-        {findContact.length > 0 && (
-          <ContactList
-            contacts={findContact}
-            onRemoveContact={this.removeContact}
-          />
+        {findContact.length > 0 ? (
+          <Filter value={filter} onSearchFilter={this.searchFilter} />
+        ) : (
+          <Notification title={"Please add contact"} />
         )}
+
+        <ContactList
+          contacts={findContact}
+          onRemoveContact={this.removeContact}
+        />
       </>
     );
   }
