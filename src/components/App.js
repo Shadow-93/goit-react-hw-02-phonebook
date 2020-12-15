@@ -60,7 +60,7 @@ class App extends Component {
   };
 
   render() {
-    const { filter } = this.state;
+    const { filter, contacts } = this.state;
     const findContact = this.getContacts();
 
     return (
@@ -69,7 +69,7 @@ class App extends Component {
         <ContactForm onAddContact={this.addContact} />
 
         <h2>Contacts</h2>
-        {findContact.length > 0 ? (
+        {contacts.length > 0 ? (
           <Filter value={filter} onSearchFilter={this.searchFilter} />
         ) : (
           <Notification title={"Please add contact"} />
