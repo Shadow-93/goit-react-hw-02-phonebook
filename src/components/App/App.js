@@ -1,10 +1,10 @@
 import React, { Component } from "react";
 import { v4 as uuidv4 } from "uuid";
 
-import ContactForm from "./ContactForm/ContactForm";
-import ContactList from "./ConatctList/ContactList";
-import Filter from "./Filter/Filter";
-import Notification from "./Notification/Notification";
+import ContactForm from "../ContactForm/ContactForm";
+import ContactList from "../ConatctList/ContactList";
+import Filter from "../Filter/Filter";
+import Notification from "../Notification/Notification";
 
 import "./App.css";
 
